@@ -10,6 +10,9 @@ package-lock.json
 src/grammar.json
 src/node-types.json
 
+# Zed clones grammars here at install time
+grammars/
+
 # Claude
 .claude/
 
