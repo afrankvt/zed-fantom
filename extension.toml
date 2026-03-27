@@ -8,5 +8,4 @@ repository = "https://github.com/afrankvt/zed-fantom"
 
 [grammars.fantom]
 repository = "https://github.com/afrankvt/zed-fantom"
-path = "grammars/fantom"
-rev = "HEAD"
+commit = "HEAD"

@@ -7,8 +7,8 @@ node_modules/
 package-lock.json
 
 # Tree-sitter generated (parser.c and tree_sitter/ are committed — Zed needs them)
-grammars/fantom/src/grammar.json
-grammars/fantom/src/node-types.json
+src/grammar.json
+src/node-types.json
 
 # Claude
 .claude/

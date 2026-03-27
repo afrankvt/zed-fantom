@@ -6,7 +6,7 @@
       "scope": "source.fantom",
       "path": ".",
       "file-types": ["fan"],
-      "highlights": "../../languages/fantom/highlights.scm"
+      "highlights": "languages/fantom/highlights.scm"
     }
   ],
   "metadata": {
