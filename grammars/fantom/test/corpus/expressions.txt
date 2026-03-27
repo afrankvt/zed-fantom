@@ -1,0 +1,109 @@
+================
+Binary expressions
+================
+
+class Foo
+{
+  Void test()
+  {
+    x := 1 + 2
+    y := 3 * 4
+    z := a == b
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (binary_expression
+              (int_literal)
+              (int_literal)))
+          (local_declaration
+            name: (identifier)
+            value: (binary_expression
+              (int_literal)
+              (int_literal)))
+          (local_declaration
+            name: (identifier)
+            value: (binary_expression
+              (identifier)
+              (identifier))))))))
+
+================
+Member access and method call
+================
+
+class Foo
+{
+  Void test()
+  {
+    x := this.name
+    y := foo.bar(1, 2)
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (member_access
+              object: (this_expression)
+              member: (identifier)))
+          (local_declaration
+            name: (identifier)
+            value: (call_expression
+              function: (member_access
+                object: (identifier)
+                member: (identifier))
+              arguments: (argument_list
+                (int_literal)
+                (int_literal)))))))))
+
+================
+Unary expressions
+================
+
+class Foo
+{
+  Void test()
+  {
+    x := !flag
+    y := -count
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (unary_expression
+              (identifier)))
+          (local_declaration
+            name: (identifier)
+            value: (unary_expression
+              (identifier))))))))

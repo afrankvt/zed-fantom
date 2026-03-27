@@ -1,0 +1,44 @@
+================
+Mixin with abstract method
+================
+
+mixin Formatter
+{
+  abstract Str format()
+}
+
+---
+
+(source_file
+  (mixin_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers)
+        return_type: (identifier)
+        name: (identifier)
+        params: (parameter_list)))))
+
+================
+Mixin with concrete method
+================
+
+mixin Displayable
+{
+  Str display() { return "ok" }
+}
+
+---
+
+(source_file
+  (mixin_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        return_type: (identifier)
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (return_statement
+            (string_literal
+              (string_content))))))))

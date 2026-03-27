@@ -1,0 +1,53 @@
+================
+Simple using
+================
+
+using sys
+
+---
+
+(source_file
+  (using_statement
+    pod: (identifier)))
+
+================
+Using with type
+================
+
+using sys::Str
+
+---
+
+(source_file
+  (using_statement
+    pod: (identifier)
+    type: (identifier)))
+
+================
+Using with alias
+================
+
+using sys::Str as MyStr
+
+---
+
+(source_file
+  (using_statement
+    pod: (identifier)
+    type: (identifier)
+    alias: (identifier)))
+
+================
+Multiple using statements
+================
+
+using sys
+using concurrent
+
+---
+
+(source_file
+  (using_statement
+    pod: (identifier))
+  (using_statement
+    pod: (identifier)))

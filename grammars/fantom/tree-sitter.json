@@ -1,0 +1,16 @@
+{
+  "grammars": [
+    {
+      "name": "fantom",
+      "camelcase": "Fantom",
+      "scope": "source.fantom",
+      "path": ".",
+      "file-types": ["fan"],
+      "highlights": "../../languages/fantom/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.0.1",
+    "license": "MIT"
+  }
+}

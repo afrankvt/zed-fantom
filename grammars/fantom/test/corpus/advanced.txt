@@ -1,0 +1,195 @@
+================
+Duration literals
+================
+
+class F
+{
+  Void test()
+  {
+    a := 5sec
+    b := 100ms
+    c := 3min
+    d := 2hr
+    e := 1day
+    f := 4ns
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (duration_literal))
+          (local_declaration
+            name: (identifier)
+            value: (duration_literal))
+          (local_declaration
+            name: (identifier)
+            value: (duration_literal))
+          (local_declaration
+            name: (identifier)
+            value: (duration_literal))
+          (local_declaration
+            name: (identifier)
+            value: (duration_literal))
+          (local_declaration
+            name: (identifier)
+            value: (duration_literal)))))))
+
+================
+Type literal
+================
+
+class F
+{
+  Void test()
+  {
+    t := Str#
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (type_literal
+              (identifier))))))))
+
+================
+Slot literal
+================
+
+class F
+{
+  Void test()
+  {
+    s := Int#plus
+    t := #echo
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (slot_literal
+              (identifier)
+              (identifier)))
+          (local_declaration
+            name: (identifier)
+            value: (slot_literal
+              (identifier))))))))
+
+================
+List literal
+================
+
+class F
+{
+  Void test()
+  {
+    a := [1, 2, 3]
+    b := [,]
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (list_literal
+              (int_literal)
+              (int_literal)
+              (int_literal)))
+          (local_declaration
+            name: (identifier)
+            value: (list_literal)))))))
+
+================
+Map literal
+================
+
+class F
+{
+  Void test()
+  {
+    a := [1:"one", 2:"two"]
+    b := [:]
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (map_literal
+              (int_literal)
+              (string_literal
+                (string_content))
+              (int_literal)
+              (string_literal
+                (string_content))))
+          (local_declaration
+            name: (identifier)
+            value: (map_literal)))))))
+
+================
+Qualified type
+================
+
+class F
+{
+  sys::Str name
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (field_declaration
+        type: (qualified_type
+          pod: (identifier)
+          name: (identifier))
+        name: (identifier)))))

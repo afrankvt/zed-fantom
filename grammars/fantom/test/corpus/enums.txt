@@ -1,0 +1,49 @@
+================
+Simple enum
+================
+
+enum class Color { red, blue, green }
+
+---
+
+(source_file
+  (enum_declaration
+    name: (identifier)
+    body: (enum_body
+      (enum_value
+        name: (identifier))
+      (enum_value
+        name: (identifier))
+      (enum_value
+        name: (identifier)))))
+
+================
+Enum with constructor args
+================
+
+enum class Suits
+{
+  clubs("black"), diamonds("red")
+  const Str color
+}
+
+---
+
+(source_file
+  (enum_declaration
+    name: (identifier)
+    body: (enum_body
+      (enum_value
+        name: (identifier)
+        arguments: (argument_list
+          (string_literal
+            (string_content))))
+      (enum_value
+        name: (identifier)
+        arguments: (argument_list
+          (string_literal
+            (string_content))))
+      (field_declaration
+        (modifiers)
+        type: (identifier)
+        name: (identifier)))))

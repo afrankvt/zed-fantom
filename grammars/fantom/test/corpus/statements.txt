@@ -1,0 +1,302 @@
+================
+If statement
+================
+
+class Foo
+{
+  Void test()
+  {
+    if (x > 0) { echo("pos") }
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (if_statement
+            condition: (parenthesized_expression
+              (binary_expression
+                (identifier)
+                (int_literal)))
+            consequence: (block
+              (expression_statement
+                (call_expression
+                  function: (identifier)
+                  arguments: (argument_list
+                    (string_literal
+                      (string_content))))))))))))
+
+================
+If else statement
+================
+
+class Foo
+{
+  Void test()
+  {
+    if (x > 0) { echo("pos") }
+    else { echo("neg") }
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (if_statement
+            condition: (parenthesized_expression
+              (binary_expression
+                (identifier)
+                (int_literal)))
+            consequence: (block
+              (expression_statement
+                (call_expression
+                  function: (identifier)
+                  arguments: (argument_list
+                    (string_literal
+                      (string_content))))))
+            alternative: (block
+              (expression_statement
+                (call_expression
+                  function: (identifier)
+                  arguments: (argument_list
+                    (string_literal
+                      (string_content))))))))))))
+
+================
+While statement
+================
+
+class Foo
+{
+  Void test()
+  {
+    while (x > 0) { x-- }
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (while_statement
+            condition: (parenthesized_expression
+              (binary_expression
+                (identifier)
+                (int_literal)))
+            body: (block
+              (expression_statement
+                (unary_expression
+                  (identifier))))))))))
+
+================
+For statement
+================
+
+class Foo
+{
+  Void test()
+  {
+    for (Int i := 0; i < 10; ++i) { echo(i) }
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (for_statement
+            init: (local_declaration
+              type: (identifier)
+              name: (identifier)
+              value: (int_literal))
+            condition: (binary_expression
+              (identifier)
+              (int_literal))
+            update: (unary_expression
+              (identifier))
+            body: (block
+              (expression_statement
+                (call_expression
+                  function: (identifier)
+                  arguments: (argument_list
+                    (identifier)))))))))))
+
+================
+Switch statement
+================
+
+class Foo
+{
+  Void test()
+  {
+    switch (x)
+    {
+      case 1: echo("one")
+      default: echo("other")
+    }
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (switch_statement
+            value: (parenthesized_expression
+              (identifier))
+            (case_clause
+              value: (int_literal)
+              (expression_statement
+                (call_expression
+                  function: (identifier)
+                  arguments: (argument_list
+                    (string_literal
+                      (string_content))))))
+            (default_clause
+              (expression_statement
+                (call_expression
+                  function: (identifier)
+                  arguments: (argument_list
+                    (string_literal
+                      (string_content))))))))))))
+
+================
+Try catch finally
+================
+
+class Foo
+{
+  Void test()
+  {
+    try { risky() }
+    catch (Err e) { echo(e) }
+    finally { cleanup() }
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (try_statement
+            body: (block
+              (expression_statement
+                (call_expression
+                  function: (identifier)
+                  arguments: (argument_list))))
+            (catch_clause
+              type: (identifier)
+              name: (identifier)
+              body: (block
+                (expression_statement
+                  (call_expression
+                    function: (identifier)
+                    arguments: (argument_list
+                      (identifier))))))
+            (finally_clause
+              body: (block
+                (expression_statement
+                  (call_expression
+                    function: (identifier)
+                    arguments: (argument_list)))))))))))
+
+================
+Throw statement
+================
+
+class Foo
+{
+  Void test()
+  {
+    throw Err("boom")
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (throw_statement
+            (call_expression
+              function: (identifier)
+              arguments: (argument_list
+                (string_literal
+                  (string_content))))))))))
+
+================
+Break and continue
+================
+
+class Foo
+{
+  Void test()
+  {
+    while (true) { break }
+    while (true) { continue }
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (while_statement
+            condition: (parenthesized_expression
+              (bool_literal))
+            body: (block
+              (break_statement)))
+          (while_statement
+            condition: (parenthesized_expression
+              (bool_literal))
+            body: (block
+              (continue_statement))))))))

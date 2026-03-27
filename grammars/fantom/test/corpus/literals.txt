@@ -1,0 +1,177 @@
+================
+Integer literals
+================
+
+class Foo
+{
+  Void test()
+  {
+    x := 42
+    y := 0xFF
+    z := 0b1010
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (int_literal))
+          (local_declaration
+            name: (identifier)
+            value: (int_literal))
+          (local_declaration
+            name: (identifier)
+            value: (int_literal)))))))
+
+================
+Float literal
+================
+
+class Foo
+{
+  Void test()
+  {
+    x := 3.14f
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (float_literal)))))))
+
+================
+Decimal literal
+================
+
+class Foo
+{
+  Void test()
+  {
+    x := 3.14d
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (decimal_literal)))))))
+
+================
+Bool and null literals
+================
+
+class Foo
+{
+  Void test()
+  {
+    a := true
+    b := false
+    c := null
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (bool_literal))
+          (local_declaration
+            name: (identifier)
+            value: (bool_literal))
+          (local_declaration
+            name: (identifier)
+            value: (null_literal)))))))
+
+================
+String literal
+================
+
+class Foo
+{
+  Void test()
+  {
+    x := "hello world"
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (string_literal
+              (string_content))))))))
+
+================
+String with escape sequences
+================
+
+class Foo
+{
+  Void test()
+  {
+    x := "hello\nworld\t!"
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (string_literal
+              (string_content)
+              (escape_sequence)
+              (string_content)
+              (escape_sequence)
+              (string_content))))))))

@@ -1,0 +1,56 @@
+================
+Facet declaration
+================
+
+facet class Table
+{
+  const Str name := ""
+}
+
+---
+
+(source_file
+  (facet_declaration
+    name: (identifier)
+    body: (class_body
+      (field_declaration
+        (modifiers)
+        type: (identifier)
+        name: (identifier)
+        value: (string_literal)))))
+
+================
+Facet annotation simple
+================
+
+@Serializable
+class Foo {}
+
+---
+
+(source_file
+  (facet_annotation
+    name: (identifier))
+  (class_declaration
+    name: (identifier)
+    body: (class_body)))
+
+================
+Facet annotation with config
+================
+
+@Table { name = "users" }
+class Foo {}
+
+---
+
+(source_file
+  (facet_annotation
+    name: (identifier)
+    config: (facet_config
+      key: (identifier)
+      value: (string_literal
+        (string_content))))
+  (class_declaration
+    name: (identifier)
+    body: (class_body)))

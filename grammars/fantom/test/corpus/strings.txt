@@ -1,0 +1,193 @@
+================
+Simple interpolation
+================
+
+class F
+{
+  Void test()
+  {
+    x := "hello $name"
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (string_literal
+              (string_content)
+              (interpolation
+                (identifier)))))))))
+
+================
+Complex interpolation
+================
+
+class F
+{
+  Void test()
+  {
+    x := "hello ${name.upper}"
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (string_literal
+              (string_content)
+              (interpolation
+                (member_access
+                  object: (identifier)
+                  member: (identifier))))))))))
+
+================
+Triple quoted string
+================
+
+class F
+{
+  Void test()
+  {
+    x := """hello world"""
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (triple_string_literal)))))))
+
+================
+URI literal
+================
+
+class F
+{
+  Void test()
+  {
+    x := `http://example.com`
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (uri_literal
+              (uri_content))))))))
+
+================
+URI with interpolation
+================
+
+class F
+{
+  Void test()
+  {
+    x := `http://example.com/$path`
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (uri_literal
+              (uri_content)
+              (interpolation
+                (identifier)))))))))
+
+================
+DSL literal
+================
+
+class F
+{
+  Void test()
+  {
+    x := <|raw content here|>
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (dsl_literal)))))))
+
+================
+Empty string
+================
+
+class F
+{
+  Void test()
+  {
+    x := ""
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (string_literal)))))))

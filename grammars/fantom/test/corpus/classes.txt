@@ -1,0 +1,155 @@
+================
+Simple class
+================
+
+class Foo {}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body)))
+
+================
+Class with modifiers
+================
+
+abstract class Foo {}
+
+---
+
+(source_file
+  (class_declaration
+    (modifiers)
+    name: (identifier)
+    body: (class_body)))
+
+================
+Const class
+================
+
+const class Config {}
+
+---
+
+(source_file
+  (class_declaration
+    (modifiers)
+    name: (identifier)
+    body: (class_body)))
+
+================
+Class with inheritance
+================
+
+class Foo : Bar {}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    (inheritance
+      (identifier))
+    body: (class_body)))
+
+================
+Class with field
+================
+
+class Foo
+{
+  Int count := 0
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (field_declaration
+        type: (identifier)
+        name: (identifier)
+        value: (int_literal)))))
+
+================
+Class with method
+================
+
+class Foo
+{
+  Void bar()
+  {
+    return
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (return_statement))))))
+
+================
+Class with constructor
+================
+
+class Foo
+{
+  new make(Int x)
+  {
+    this.x = x
+  }
+  Int x
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (constructor_declaration
+        name: (identifier)
+        params: (parameter_list
+          (parameter
+            type: (identifier)
+            name: (identifier)))
+        body: (block
+          (expression_statement
+            (assignment_expression
+              left: (member_access
+                object: (this_expression)
+                member: (identifier))
+              right: (identifier)))))
+      (field_declaration
+        type: (identifier)
+        name: (identifier)))))
+
+================
+Class with nullable field
+================
+
+class Foo
+{
+  Str? name
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (field_declaration
+        type: (nullable_type
+          (identifier))
+        name: (identifier)))))

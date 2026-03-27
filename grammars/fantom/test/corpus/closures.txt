@@ -1,0 +1,165 @@
+================
+Closure with params and return
+================
+
+class F
+{
+  Void test()
+  {
+    f := |Int a, Int b->Int| { return a + b }
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (closure_expression
+              params: (closure_params
+                (closure_param
+                  type: (identifier)
+                  name: (identifier))
+                (closure_param
+                  type: (identifier)
+                  name: (identifier))
+                return_type: (identifier))
+              body: (block
+                (return_statement
+                  (binary_expression
+                    (identifier)
+                    (identifier)))))))))))
+
+================
+Closure no params with return
+================
+
+class F
+{
+  Void test()
+  {
+    f := |->Bool| { return true }
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (closure_expression
+              params: (closure_params
+                return_type: (identifier))
+              body: (block
+                (return_statement
+                  (bool_literal))))))))))
+
+================
+Trailing closure
+================
+
+class F
+{
+  Void test()
+  {
+    list.each |Str v| { echo(v) }
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (expression_statement
+            (call_expression
+              function: (member_access
+                object: (identifier)
+                member: (identifier))
+              trailing_closure: (closure_expression
+                params: (closure_params
+                  (closure_param
+                    type: (identifier)
+                    name: (identifier)))
+                body: (block
+                  (expression_statement
+                    (call_expression
+                      function: (identifier)
+                      arguments: (argument_list
+                        (identifier)))))))))))))
+
+================
+It-block trailing closure
+================
+
+class F
+{
+  Void test()
+  {
+    list.each { echo(it) }
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (expression_statement
+            (call_expression
+              function: (member_access
+                object: (identifier)
+                member: (identifier))
+              trailing_closure: (it_block
+                (block
+                  (expression_statement
+                    (call_expression
+                      function: (identifier)
+                      arguments: (argument_list
+                        (it_expression)))))))))))))
+
+================
+Function type field
+================
+
+class F
+{
+  |Int, Int->Str| callback
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (field_declaration
+        type: (function_type
+          (identifier)
+          (identifier)
+          (identifier))
+        name: (identifier)))))

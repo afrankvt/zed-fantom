@@ -1,0 +1,44 @@
+================
+Line comment
+================
+
+// this is a comment
+class Foo {}
+
+---
+
+(source_file
+  (line_comment)
+  (class_declaration
+    name: (identifier)
+    body: (class_body)))
+
+================
+Block comment
+================
+
+/* block comment */
+class Foo {}
+
+---
+
+(source_file
+  (block_comment)
+  (class_declaration
+    name: (identifier)
+    body: (class_body)))
+
+================
+Doc comment
+================
+
+** This is a doc comment
+class Foo {}
+
+---
+
+(source_file
+  (doc_comment)
+  (class_declaration
+    name: (identifier)
+    body: (class_body)))

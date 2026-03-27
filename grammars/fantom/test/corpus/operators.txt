@@ -1,0 +1,248 @@
+================
+Ternary expression
+================
+
+class Foo
+{
+  Void test()
+  {
+    x := cond ? a : b
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (ternary_expression
+              condition: (identifier)
+              consequence: (identifier)
+              alternative: (identifier))))))))
+
+================
+Elvis expression
+================
+
+class Foo
+{
+  Void test()
+  {
+    x := a ?: b
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (elvis_expression
+              left: (identifier)
+              right: (identifier))))))))
+
+================
+Range expressions
+================
+
+class Foo
+{
+  Void test()
+  {
+    x := 0..10
+    y := 0..<5
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (range_expression
+              start: (int_literal)
+              end: (int_literal)))
+          (local_declaration
+            name: (identifier)
+            value: (range_expression
+              start: (int_literal)
+              end: (int_literal))))))))
+
+================
+Safe member access
+================
+
+class Foo
+{
+  Void test()
+  {
+    x := obj?.name
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (safe_member_access
+              object: (identifier)
+              member: (identifier))))))))
+
+================
+Dynamic invoke
+================
+
+class Foo
+{
+  Void test()
+  {
+    obj->trap("x")
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (expression_statement
+            (call_expression
+              function: (dynamic_invoke
+                object: (identifier)
+                member: (identifier))
+              arguments: (argument_list
+                (string_literal
+                  (string_content))))))))))
+
+================
+Index expression
+================
+
+class Foo
+{
+  Void test()
+  {
+    x := list[0]
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (index_expression
+              object: (identifier)
+              index: (int_literal))))))))
+
+================
+Compound assignment
+================
+
+class Foo
+{
+  Void test()
+  {
+    x += 1
+    y -= 2
+    z *= 3
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (expression_statement
+            (assignment_expression
+              left: (identifier)
+              right: (int_literal)))
+          (expression_statement
+            (assignment_expression
+              left: (identifier)
+              right: (int_literal)))
+          (expression_statement
+            (assignment_expression
+              left: (identifier)
+              right: (int_literal))))))))
+
+================
+Type check and cast
+================
+
+class Foo
+{
+  Void test()
+  {
+    x := obj is Str
+    y := obj as Str
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        name: (identifier)
+        params: (parameter_list)
+        body: (block
+          (local_declaration
+            name: (identifier)
+            value: (type_check_expression
+              object: (identifier)
+              type: (identifier)))
+          (local_declaration
+            name: (identifier)
+            value: (type_cast_expression
+              object: (identifier)
+              type: (identifier))))))))
