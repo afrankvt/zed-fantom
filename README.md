@@ -120,7 +120,3 @@ zed-fantom/
 │   └── outline.scm             # Symbol outline
 └── examples/                   # Sample .fan files
 ```
-
-## License
-
-MIT

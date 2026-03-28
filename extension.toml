@@ -2,7 +2,7 @@ id = "fantom"
 name = "Fantom"
 version = "0.0.1"
 schema_version = 1
-authors = ["Andy Frank <afrankvt@gmail.com>"]
+authors = ["Andy Frank"]
 description = "Fantom language support for Zed"
 repository = "https://github.com/afrankvt/zed-fantom"
 
