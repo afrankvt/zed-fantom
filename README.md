@@ -40,9 +40,20 @@ Syntax highlighting, bracket matching, auto-indentation, and symbol outline for 
 
 ## Build Task
 
-This extension includes a task definition that finds and runs the nearest `build.fan` by walking up the directory tree from the current file.
+To add a global build task that finds and runs the nearest `build.fan`, add the following to your Zed tasks file (`~/.config/zed/tasks.json`):
 
-To bind it to `Cmd+B`, add the following to your Zed keymap (`Cmd+K Cmd+S` to open, or edit `~/.config/zed/keymap.json`):
+```json
+[
+  {
+    "label": "Fantom: Build",
+    "command": "dir=\"$ZED_DIRNAME\"; while [ \"$dir\" != \"/\" ] && [ ! -f \"$dir/build.fan\" ]; do dir=$(dirname \"$dir\"); done; if [ -f \"$dir/build.fan\" ]; then cd \"$dir\" && fan build.fan; else echo 'No build.fan found'; exit 1; fi",
+    "allow_concurrent_runs": false,
+    "use_new_terminal": false
+  }
+]
+```
+
+To bind it to `Cmd+B`, add the following to your Zed keymap (`~/.config/zed/keymap.json`):
 
 ```json
 [
@@ -107,7 +118,6 @@ zed-fantom/
 │   ├── brackets.scm            # Bracket matching
 │   ├── indents.scm             # Auto-indent rules
 │   └── outline.scm             # Symbol outline
-├── .zed/tasks.json             # Build task definition
 └── examples/                   # Sample .fan files
 ```
 

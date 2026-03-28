@@ -1,8 +1,0 @@
-[
-  {
-    "label": "Fantom: Build",
-    "command": "dir=\"$ZED_DIRNAME\"; while [ \"$dir\" != \"/\" ] && [ ! -f \"$dir/build.fan\" ]; do dir=$(dirname \"$dir\"); done; if [ -f \"$dir/build.fan\" ]; then cd \"$dir\" && fan build.fan; else echo 'No build.fan found'; exit 1; fi",
-    "allow_concurrent_runs": false,
-    "use_new_terminal": false,
-  },
-]
