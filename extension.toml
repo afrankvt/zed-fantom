@@ -8,4 +8,4 @@ repository = "https://github.com/afrankvt/zed-fantom"
 
 [grammars.fantom]
 repository = "https://github.com/afrankvt/zed-fantom"
-commit = "e81f4259d891351e46485d56cc33a3268cae90fa"
+commit = "97c78a2f7ad57c7cfe546b32e91caf91fb85b051"
