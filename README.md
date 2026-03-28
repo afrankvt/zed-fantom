@@ -38,6 +38,23 @@ Syntax highlighting, bracket matching, auto-indentation, and symbol outline for 
 
 4. Open any `.fan` file — syntax highlighting should be active.
 
+## Build Task
+
+This extension includes a task definition that finds and runs the nearest `build.fan` by walking up the directory tree from the current file.
+
+To bind it to `Cmd+B`, add the following to your Zed keymap (`Cmd+K Cmd+S` to open, or edit `~/.config/zed/keymap.json`):
+
+```json
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-b": ["task::Spawn", { "task_name": "Fantom: Build" }]
+    }
+  }
+]
+```
+
 ## Development
 
 ### Prerequisites
@@ -47,7 +64,6 @@ Syntax highlighting, bracket matching, auto-indentation, and symbol outline for 
 ### Setup
 
 ```
-cd grammars/fantom
 npm install
 ```
 
@@ -80,16 +96,18 @@ npx tree-sitter highlight path/to/file.fan
 ```
 zed-fantom/
 ├── extension.toml              # Zed extension manifest
+├── grammar.js                  # Tree-sitter grammar definition
+├── src/
+│   ├── parser.c                # Generated parser
+│   └── scanner.c               # External scanner (DSL strings)
+├── test/corpus/                # Grammar test cases
 ├── languages/fantom/
 │   ├── config.toml             # Language config (.fan files, comments)
 │   ├── highlights.scm          # Syntax highlighting queries
 │   ├── brackets.scm            # Bracket matching
 │   ├── indents.scm             # Auto-indent rules
 │   └── outline.scm             # Symbol outline
-├── grammars/fantom/
-│   ├── grammar.js              # Tree-sitter grammar definition
-│   ├── src/scanner.c           # External scanner (DSL strings)
-│   └── test/corpus/            # Test cases (65 tests)
+├── .zed/tasks.json             # Build task definition
 └── examples/                   # Sample .fan files
 ```
 

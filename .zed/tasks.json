@@ -1,0 +1,11 @@
+[
+  {
+    "label": "Fantom: Build",
+    "command": "bash",
+    "args": [
+      "-c",
+      "dir=\"$ZED_DIRNAME\"; while [ \"$dir\" != \"/\" ] && [ ! -f \"$dir/build.fan\" ]; do dir=$(dirname \"$dir\"); done; if [ -f \"$dir/build.fan\" ]; then cd \"$dir\" && fan build.fan; else echo 'No build.fan found'; exit 1; fi"
+    ],
+    "tags": ["fantom-build"]
+  }
+]
